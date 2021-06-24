@@ -10,10 +10,15 @@ class ModalForm extends Component {
   componentWillReceiveProps(nextProps) {
     const { isEdit, dispatch } = this.props;
     if (isEdit !== nextProps.isEdit) {
+      console.log(isEdit, nextProps.isEdit);
       if (nextProps.isEdit)
         for (const data of Object.entries(nextProps.isEdit)) {
           dispatch(change(formName, data[0], data[1]));
         }
+      else {
+        console.log("reset");
+        dispatch(reset(formName));
+      }
     }
   }
 
